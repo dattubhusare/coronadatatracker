@@ -5,6 +5,15 @@ public class LocationStat {
     private  String country;
     private int latestCases;
     private int previousDay;
+    private  int dayWiseCount;
+
+    public int getDayWiseCount() {
+        return dayWiseCount;
+    }
+
+    public void setDayWiseCount(int dayWiseCount) {
+        this.dayWiseCount = dayWiseCount;
+    }
 
     public int getPreviousDay() {
         return previousDay;
@@ -14,14 +23,6 @@ public class LocationStat {
         this.previousDay = previousDay;
     }
 
-    @Override
-    public String toString() {
-        return "LocationStat{" +
-                "state='" + state + '\'' +
-                ", country='" + country + '\'' +
-                ", latestCases='" + latestCases + '\'' +
-                '}';
-    }
 
     public String getState() {
         return state;

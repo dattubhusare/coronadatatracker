@@ -10,24 +10,32 @@
 
 <body>
 <div class="container">
-<div class="jumbotron bg-warning">
-    <h1 class="display-4">Total Corona Cases</h1>
-    <p class="lead" th:text="${totalCases}"></p>
+<div class="jumbotron bg-secondary text-center text-white">
+    <h1 class="display-4" th:text="${totalCases}"></h1>
+    <p class="lead" >Total Corona Virus Cases</p>
     <hr class="my-4">
+    <p class="lead"><span>New Cases in last on day :</span> <span th:text="${newTotalCasesInDay}"></span></p>
+    <p class="lead"> Previous Day Corona Virus Cases Count : <span th:text="${totalLastDay}"></span></p>
 </div>
-<table>
+<table class="table">
+    <thead class="thead-light">
     <tr>
         <th>Country</th>
         <th>State</th>
         <th>Total Cases</th>
-        <th>Previous Day Cases</th>
+        <th>Last Day Cases</th>
+        <th>New Cases</th>
     </tr>
+    </thead>
+    <tbody class="table-striped">
     <tr th:each="locationStat : ${locationStats}">
         <td th:text="${locationStat.country}"></td>
         <td th:text="${locationStat.state}"></td>
         <td th:text="${locationStat.latestCases}"></td>
         <td th:text="${locationStat.previousDay}"></td>
+        <td class="text-danger" th:text="+${locationStat.dayWiseCount}"></td>
     </tr>
+    </tbody>
 </table>
 </div>
 </body>

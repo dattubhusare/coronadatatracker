@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.servlet.ModelAndView;
+
 
 import java.util.List;
 
@@ -20,8 +20,12 @@ public class HomeController {
     {
         List<LocationStat> allStat=coronaDataService.getAllStat();
         int totalCases=allStat.stream().mapToInt(stat->stat.getLatestCases()).sum();
+        int totalLastDayCases=allStat.stream().mapToInt(stat->stat.getPreviousDay()).sum();
+        int newTotalCasesInDay=totalCases-totalLastDayCases;
         model.addAttribute("locationStats",allStat);
         model.addAttribute("totalCases",totalCases);
+        model.addAttribute("totalLastDay",totalLastDayCases);
+        model.addAttribute("newTotalCasesInDay",newTotalCasesInDay);
         return "home";
     }
 }

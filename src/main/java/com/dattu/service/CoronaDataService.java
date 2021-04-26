@@ -44,9 +44,10 @@ public class CoronaDataService {
             locationStat.setCountry(record.get("Country/Region"));
             int latest=Integer.parseInt(record.get(record.size()-1));
             int previous=Integer.parseInt(record.get(record.size()-2));
+            int dayWiseCount=latest-previous;
             locationStat.setLatestCases(latest);
             locationStat.setPreviousDay(previous);
-                System.out.println(locationStat);
+            locationStat.setDayWiseCount(dayWiseCount);
                 newStat.add(locationStat);
         }
         this.allStat=newStat;
