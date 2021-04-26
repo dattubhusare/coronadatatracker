@@ -4,6 +4,15 @@ public class LocationStat {
     private String state;
     private  String country;
     private int latestCases;
+    private int previousDay;
+
+    public int getPreviousDay() {
+        return previousDay;
+    }
+
+    public void setPreviousDay(int previousDay) {
+        this.previousDay = previousDay;
+    }
 
     @Override
     public String toString() {
